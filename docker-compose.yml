@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  nodo:
+    build:
+      context: ./
+      dockerfile: nodo.dockerfile
+    image: ${CONTAINER_PREFIX}.nodo1
+    container_name: ${CONTAINER_PREFIX}.nodo1
+    volumes:
+      - ${DOCKER_FILES}/nodos/nodo1:/opt/payara41
+    ports:
+     - ${PAYARA_SSH_NODE1}:22
+    networks:
+      - nodos
+
+networks:
+  nodos:
